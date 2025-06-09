@@ -24,9 +24,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-7y1t4zm@hds*=srh+!vr76%fc7u1q3-#d1ti#le@_wbx1hu%yd"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['https://projetohashflixdjango-production-1a3f.up.railway.app/', 'localhost', '127.0.0.1']
 
 # Application definition
 
