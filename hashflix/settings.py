@@ -26,7 +26,11 @@ SECRET_KEY = "django-insecure-7y1t4zm@hds*=srh+!vr76%fc7u1q3-#d1ti#le@_wbx1hu%yd
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['projetohashflixdjango-production-1a3f.up.railway.app/', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = [
+    '.railway.app',   # Aceita qualquer subdomínio da Railway
+    'localhost',
+    '127.0.0.1'
+]
 
 # Application definition
 
