@@ -61,7 +61,7 @@
                     Episódios
                 </h2>
                 {% for episodio in object.episodios.all %}
-                    <h3 class="text-lg mt-4">Episódio {{ forloop.counter }}</h3>
+                    <h3 class="text-lg mt-3">Episódio {{ forloop.counter }}</h3>
                     <a href="{{ episodio.video }}" class="card-episodio flex p-3 mt-2 gap-4 rounded-4 transition duration-300 hover:text-blue-400">
                         <img src="{{ episodio.thumb }}" alt="Thumb do Episódio {{ forloop.counter }}" class="w-1/4 h-full">
                         <div class="flex flex-col justify-between">
