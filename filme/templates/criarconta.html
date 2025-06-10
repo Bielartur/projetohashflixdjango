@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
-{% load crispy_forms_tags %}
+{% load widget_tweaks %}
 
 {% block titulo %}
     Criar Conta
@@ -11,11 +11,16 @@
         <div class="z-10 h-full py-32 md:py-0 text-gray-100 text-center flex items-center flex-col">
             <form method="post">
                 {% csrf_token %}
-                <fieldset class="form-group">
+                <fieldset class="flex flex-col form-group gap-2">
                     <legend class="border-bottom mb-4">Crie uma conta para continuar</legend>
-                    {{ form|crispy }}
+                    {% for campo in form %}
+                            {% render_field campo class="p-2 bg-gray-900 mb-2 rounded-2" placeholder=campo.label %}
+                            {% for erro in campo.errors %}
+                                <p class="text-red-600 text-sm mb-2">{{ erro }}</p>
+                            {% endfor %}
+                    {% endfor %}
                 </fieldset>
-                <button class="bg-red-600 py-1 px-3 text-white w-full md:text-lg rounded-md" type="submit">Criar Conta</button>
+                <button class="bg-red-600 py-1 px-3 text-white w-full md:text-lg rounded-md mt-2" type="submit">Criar Conta</button>
             </form>
 
         </div>
