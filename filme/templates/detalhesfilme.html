@@ -5,6 +5,18 @@
     Homepage Filmes
 {% endblock titulo %}
 
+{% block head %}
+    <style>
+    .card-episodio {
+        background-color: #181818;
+    }
+
+    .card-episodio:hover {
+        background-color: #222;
+    }
+    </style>
+{% endblock %}
+
 {% block content %}
 
 <main class='bg-primary_black min-h-screen w-full'>
@@ -43,19 +55,24 @@
                     Visualizações: {{ object.visualizacoes }}
                 </p>
             </div>
-
-            <div style='margin-top:2rem;margin-bottom:2rem;'>
+            {% if object.episodios.all %}
+            <div class="mt-5">
                 <h2 class="text-gray-200 text-3xl font-medium">
                     Episódios
                 </h2>
                 {% for episodio in object.episodios.all %}
-                    <h3 class='text-lg'>
-                        <a href="#">
-                            <p>Episódio {{ forloop.counter }}: {{ episodio.titulo }}</p>
-                        </a>
-                    </h3>
+                    <h3 class="text-lg mt-4">Episódio {{ forloop.counter }}</h3>
+                    <a href="{{ episodio.video }}" class="card-episodio flex p-3 mt-2 gap-4 rounded-4 transition duration-300 hover:text-blue-400">
+                        <img src="{{ episodio.thumb }}" alt="Thumb do Episódio {{ forloop.counter }}" class="w-1/4 h-full">
+                        <div class="flex flex-col justify-between">
+                            <h4 class='text-lg mb-2 mt-2'>
+                                {{ episodio.titulo }}
+                            </h4>
+                            <p class="mb-3 text-gray-400">{{ episodio.filme.titulo }}</p>
+                        </div>
+                    </a>
                 {% endfor %}
-
+            {% endif %}
             </div>
 
         </div>
