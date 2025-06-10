@@ -14,7 +14,7 @@
                 <fieldset class="flex flex-col form-group gap-2">
                     <legend class="border-bottom mb-4">Crie uma conta para continuar</legend>
                     {% for campo in form %}
-                            {% render_field campo class="p-2 bg-gray-900 mb-2 rounded-2" placeholder=campo.label %}
+                            {% render_field campo class="p-2 bg-gray-900 mb-2 rounded-2 opacity-90 border-1" placeholder=campo.label %}
                             {% for erro in campo.errors %}
                                 <p class="text-red-600 text-sm mb-2">{{ erro }}</p>
                             {% endfor %}

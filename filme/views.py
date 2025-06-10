@@ -3,7 +3,7 @@ from django.shortcuts import reverse, redirect
 from django.views.generic import TemplateView, ListView, DetailView, FormView, UpdateView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from filme.models import Filme, Usuario
-from filme.forms import CriarContaForm, FormHomepage
+from filme.forms import CriarContaForm, FormHomepage, EditarPerfilForm
 
 
 # Create your views here.
@@ -71,8 +71,8 @@ class PesquisaFilme(LoginRequiredMixin, ListView):
 
 class PaginaPerfil(LoginRequiredMixin, UserPassesTestMixin,UpdateView):
     template_name = "editarperfil.html"
+    form_class = EditarPerfilForm
     model = Usuario
-    fields = ['first_name', 'last_name', 'email']
 
     def test_func(self):
         user = self.get_object()

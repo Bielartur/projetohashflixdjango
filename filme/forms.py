@@ -1,4 +1,4 @@
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserChangeForm, UserCreationForm
 from django import forms
 
 from filme.models import Usuario
@@ -12,4 +12,13 @@ class CriarContaForm(UserCreationForm):
     class Meta(UserCreationForm):
         model = Usuario
         fields = ('first_name', 'last_name', 'username', 'email', 'password1', 'password2')
+
+class EditarPerfilForm(UserChangeForm):
+    first_name = forms.CharField(label='Nome')
+    last_name = forms.CharField(label='Sobrenome')
+    email = forms.EmailField(label='Email')
+
+    class Meta(UserChangeForm):
+        model = Usuario
+        fields = ('first_name', 'last_name', 'email')
 
