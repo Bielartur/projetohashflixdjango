@@ -152,17 +152,17 @@
                             {% if forloop.counter <= 4 %}
                                 <div class="item h-64 w-1/4 m-4">
                                     <a href="{% url 'filme:detalhesfilme' filme.pk %}">
-                                        <img src="{{ filme.thumb.url }}" class="rounded-md w-full h-full object-cover">
+                                        <img src="{{ filme.thumb.url }}" alt="Thumb do {{ filme.titulo }}" class="rounded-md w-full h-full object-cover">
                                     </a>
                                 </div>
                             {% endif %}
                         {% endfor %}
                         <a href="#section2emalta" class="arrow__btn text-6xl">›</a>
-                        {% if lista_filmes_recentes|length > 4 %}
-                            </section>
+                    </section>
+                        {% if lista_filmes_em_alta|length > 4 %}
                             <section id="section2emalta" class="flex flex-nowrap items-center justify-center">
                                 <a href="#section1emalta" class="arrow__btn text-6xl">‹</a>
-                                {% for filme in lista_filmes_recentes %}
+                                {% for filme in lista_filmes_em_alta %}
                                     {% if forloop.counter > 4 %}
                                         <div class="item h-64 w-1/4 m-4">
                                             <a href="{% url 'filme:detalhesfilme' filme.pk %}">
