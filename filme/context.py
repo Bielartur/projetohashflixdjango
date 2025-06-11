@@ -9,8 +9,10 @@ def lista_filmes_em_alta(request):
     return {"lista_filmes_em_alta": lista_filmes}
 
 def filme_destaque(request):
-    if not request.user.filmes_vistos.exists():
+    user = request.user
+    if user.is_authenticated:
+        if user.filmes_vistos.exists():
+            return {"filme_destaque": request.user.filmes_vistos.last()}
+    else:
         filme_destaque = Filme.objects.order_by('-data_criacao').first()
         return {"filme_destaque": filme_destaque}
-    else:
-        return {"filme_destaque": request.user.filmes_vistos.last()}
